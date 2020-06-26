@@ -25,6 +25,8 @@ dependencies {
 
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+
+    compile files('libs/algs4.jar')
 }
 
 test {
