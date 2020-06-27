@@ -12,7 +12,7 @@ import java.util.List;
  * 명령어 인수로 정수 N을 입력 받아 N개의 랜덤 좌표를 1X1 사각형 영역 안에 생성하는
  * Point2D 클라이언트 프로그램을작성하라. 그리고 가장 가까이 있는 두 점의 거리를 계산하라.
  */
-class Pro1_2_1 {
+class Pro_1_2_1 {
 
   public static void main(String[] args) {
     int n = argumentParse(args);
