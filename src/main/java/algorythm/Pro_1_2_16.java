@@ -3,7 +3,7 @@ package algorythm;
 /**
  * 유리수에 대한 덧셈, 뺄셈, 곱셈, 나눗셈을 지원하는 불변 데이터 타입 Rational 을 구현하라.
  *
- * Rational(int numerator, int denominator)
+ * Rational(int numerator, int denominator) 분자, 분모
  * Rational plus(Rational b) 이 값과 b의 합
  * Rational minus(Rational b) 이 값과 b의 차이
  * Rational times(Rational b) 이 값과 b의 곱
@@ -19,5 +19,28 @@ package algorythm;
  */
 class Pro_1_2_16 {
 
+  static class Rational {
+    private final long numerator;
+    private final long denominator;
+
+    /**
+     * 유리수 생성자.
+     * @param integer 정수
+     */
+    Rational(long integer) {
+      this.numerator = integer;
+      this.denominator = 1;
+    }
+
+    /**
+     * 유리수 생성자.
+     * @param numerator 분자
+     * @param denominator 분모
+     */
+    Rational(long numerator, long denominator) {
+      this.numerator = numerator;
+      this.denominator = denominator;
+    }
+  }
 
 }
