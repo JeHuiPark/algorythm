@@ -9,7 +9,7 @@ package algorythm;
  * Rational times(Rational b) 이 값과 b의 곱
  * Rational divideBy(Rational b) 이 값을 b로 나눈 몫
  * Rational equals(Rational that) 동치성
- * String toString() 문자열 표
+ * String toString() 문자열 표현
  *
  * 오버플로 발생에 대해서는 걱정하지 않아도 된다 (연습문제 1.2.17 참조)
  * 대신 분자, 분모는 long 타입을 사용하도록 한다.
@@ -40,6 +40,47 @@ class Pro_1_2_16 {
     Rational(long numerator, long denominator) {
       this.numerator = numerator;
       this.denominator = denominator;
+    }
+
+    /**
+     * this + b 의 결과를 리턴한다.
+     */
+    Rational plus(Rational b) {
+      throw new UnsupportedOperationException();
+    }
+
+    /**
+     * this - b 의 결과를 리턴한다.
+     */
+    Rational minus(Rational b) {
+      throw new UnsupportedOperationException();
+    }
+
+    /**
+     * this * b 의 결과를 리턴한다.
+     */
+    Rational times(Rational b) {
+      throw new UnsupportedOperationException();
+    }
+
+    /**
+     * this / b 의 결과를 리턴한다.
+     */
+    Rational divideBy(Rational b) {
+      throw new UnsupportedOperationException();
+    }
+
+    /**
+     * this 와 b 의 동치성 결과를 리턴한다.
+     */
+    @Override
+    public boolean equals(Object b) {
+      throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String toString() {
+      throw new UnsupportedOperationException();
     }
   }
 
