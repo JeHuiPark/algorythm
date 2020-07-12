@@ -84,6 +84,14 @@ class Pro_1_2_16 {
       throw new UnsupportedOperationException();
     }
 
+    long getNumerator() {
+      return numerator;
+    }
+
+    long getDenominator() {
+      return denominator;
+    }
+
     /**
      * a 와 b의 최대 공약수를 리턴한다.
      *
