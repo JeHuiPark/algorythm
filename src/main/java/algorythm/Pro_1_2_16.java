@@ -38,8 +38,9 @@ class Pro_1_2_16 {
      * @param denominator 분모
      */
     Rational(long numerator, long denominator) {
-      this.numerator = numerator;
-      this.denominator = denominator;
+      long gcd = gcd(numerator, denominator);
+      this.numerator = numerator / gcd;
+      this.denominator = denominator / gcd;
     }
 
     /**
