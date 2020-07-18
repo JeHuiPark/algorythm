@@ -77,6 +77,22 @@ class Pro_1_2_16Test {
     }
   }
 
+  @Nested
+  @DisplayName("times 는")
+  class Describe_times {
+
+    @RepeatedTest(100)
+    @DisplayName("this 에서 b를 곱한 결과를 리턴한다.")
+    void test4() {
+      var a = givenRandomRational();
+      var b = givenRandomRational();
+      var testHelper = new TestHelper(a, b);
+
+      var actual = a.times(b);
+      assertEquals(testHelper.expectedTimes(), actual);
+    }
+  }
+
 
   /**
    * 테스트 검증 도우미 클래스.
@@ -110,6 +126,12 @@ class Pro_1_2_16Test {
       long calcDenominator = aDenominator * bDenominator;
       long calcNumerator = (aNumerator * bDenominator) - (bNumerator * aDenominator);
       return new Rational(calcNumerator, calcDenominator);
+    }
+
+    Rational expectedTimes() {
+      return new Rational(
+          a.getNumerator() * b.getNumerator(),
+          a.getDenominator() * b.getDenominator());
     }
   }
 }
