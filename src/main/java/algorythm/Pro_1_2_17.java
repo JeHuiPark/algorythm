@@ -30,7 +30,8 @@ class Pro_1_2_17 {
     }
 
     StrongRational minus(StrongRational b) {
-      throw new UnsupportedOperationException();
+      commonDenominatorValidation(b, (_a, _b) -> _a - _b);
+      return StrongRational.of(rational.minus(b.rational));
     }
 
     /**
