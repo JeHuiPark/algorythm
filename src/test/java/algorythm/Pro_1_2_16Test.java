@@ -1,5 +1,6 @@
 package algorythm;
 
+import static algorythm.Pro_1_2_16.Rational;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -23,11 +24,11 @@ class Pro_1_2_16Test {
       int given_times1 = new Random().nextInt(100) + 1;
       int given_times2 = new Random().nextInt(100) + 1;
 
-      var rational1 = new Pro_1_2_16.Rational(
+      var rational1 = new Rational(
           given_numerator * given_times1,
           given_denominator * given_times1);
 
-      var rational2 = new Pro_1_2_16.Rational(
+      var rational2 = new Rational(
           given_numerator * given_times2,
           given_denominator * given_times2);
 
