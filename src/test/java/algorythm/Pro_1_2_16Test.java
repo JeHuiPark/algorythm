@@ -129,7 +129,7 @@ class Pro_1_2_16Test {
 
       long calcDenominator = aDenominator * bDenominator;
       long calcNumerator = (aNumerator * bDenominator) + (bNumerator * aDenominator);
-      return new Rational(calcNumerator, calcDenominator);
+      return new Rational((int) calcNumerator, (int) calcDenominator);
     }
 
     Rational expectedMinus() {
@@ -140,18 +140,18 @@ class Pro_1_2_16Test {
 
       long calcDenominator = aDenominator * bDenominator;
       long calcNumerator = (aNumerator * bDenominator) - (bNumerator * aDenominator);
-      return new Rational(calcNumerator, calcDenominator);
+      return new Rational((int) calcNumerator, (int) calcDenominator);
     }
 
     Rational expectedTimes() {
       return new Rational(
-          a.getNumerator() * b.getNumerator(),
-          a.getDenominator() * b.getDenominator());
+          (int) (a.getNumerator() * b.getNumerator()),
+          (int) (a.getDenominator() * b.getDenominator()));
     }
 
     Rational expectedDivide() {
-      var numerator = a.getNumerator() * b.getDenominator();
-      var denominator = a.getDenominator() * b.getNumerator();
+      int numerator = (int) (a.getNumerator() * b.getDenominator());
+      int denominator = (int) (a.getDenominator() * b.getNumerator());
       return new Rational(numerator, denominator);
     }
   }
