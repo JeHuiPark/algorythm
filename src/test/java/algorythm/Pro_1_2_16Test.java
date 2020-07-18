@@ -39,4 +39,28 @@ class Pro_1_2_16Test {
     }
   }
 
+  /**
+   * 테스트 검증 도우미 클래스.
+   */
+  static class TestHelper {
+    private final Rational a;
+    private final Rational b;
+
+    TestHelper(Rational a, Rational b) {
+      this.a = a;
+      this.b = b;
+    }
+
+    Rational expectedPlus() {
+      long aNumerator = a.getNumerator();
+      long bNumerator = b.getNumerator();
+      long aDenominator = a.getDenominator();
+      long bDenominator = b.getDenominator();
+
+      long calcDenominator = aDenominator * bDenominator;
+      long calcNumerator = (aNumerator * bDenominator) + (bNumerator * aDenominator);
+      return new Rational(calcNumerator, calcDenominator);
+    }
+
+  }
 }
