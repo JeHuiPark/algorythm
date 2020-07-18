@@ -1,7 +1,10 @@
 package algorythm;
 
+import static algorythm.Pro_1_2_16.Rational.lcm;
+
 import algorythm.Pro_1_2_16.Rational;
 import java.util.Objects;
+import java.util.function.LongBinaryOperator;
 
 /**
  * 강건한 유리수 구현.
@@ -22,11 +25,29 @@ class Pro_1_2_17 {
     }
 
     StrongRational plus(StrongRational b) {
-      throw new UnsupportedOperationException();
+      commonDenominatorValidation(b, Long::sum);
+      return StrongRational.of(rational.plus(b.rational));
     }
 
     StrongRational minus(StrongRational b) {
       throw new UnsupportedOperationException();
+    }
+
+    /**
+     * 통분 후 연산(+,-) 작업에서 오버플로우가 발생하는지 검증한다.
+     */
+    private void commonDenominatorValidation(StrongRational b, LongBinaryOperator longBinaryOperator) {
+      long commonDenominator = lcm(rational.getDenominator(), b.rational.getDenominator());
+      assert Integer.MAX_VALUE >= commonDenominator
+          && Integer.MIN_VALUE <= commonDenominator;
+
+      long expectedNumeratorA =
+          (commonDenominator / rational.getDenominator()) * (long) rational.getNumerator();
+      long expectedNumeratorB =
+          (commonDenominator / b.rational.getDenominator()) * (long) b.rational.getNumerator();
+      long numerator = longBinaryOperator.applyAsLong(expectedNumeratorA, expectedNumeratorB);
+      assert Integer.MAX_VALUE >= numerator
+          && Integer.MIN_VALUE <= numerator;
     }
 
     StrongRational times(StrongRational b) {
