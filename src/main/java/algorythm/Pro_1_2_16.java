@@ -79,7 +79,7 @@ class Pro_1_2_16 {
     Rational times(Rational b) {
       return new Rational(
           this.numerator * b.numerator,
-          this.denominator * this.denominator
+          this.denominator * b.denominator
       );
     }
 
