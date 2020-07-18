@@ -78,6 +78,14 @@ class Pro_1_2_17 {
       return this.times(new StrongRational(b.rational.getDenominator(), b.rational.getNumerator()));
     }
 
+    int getNumerator() {
+      return rational.getNumerator();
+    }
+
+    int getDenominator() {
+      return rational.getDenominator();
+    }
+
     @Override
     public boolean equals(Object o) {
       if (this == o) {
