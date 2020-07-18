@@ -51,9 +51,10 @@ class Pro_1_2_16 {
         return new Rational(this.numerator + b.numerator, denominator);
       }
       long lcm = lcm(this.denominator, b.denominator);
-      var rationalA = new Rational(this.numerator * (lcm / this.denominator), lcm);
-      var rationalB = new Rational(b.numerator * (lcm / b.denominator), lcm);
-      return rationalA.plus(rationalB);
+      return new Rational(
+          (this.numerator * (lcm / this.denominator)) + (b.numerator * (lcm / b.denominator)),
+          lcm
+      );
     }
 
     /**
