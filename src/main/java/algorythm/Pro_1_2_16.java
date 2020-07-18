@@ -28,19 +28,10 @@ class Pro_1_2_16 {
 
     /**
      * 유리수 생성자.
-     * @param integer 정수
-     */
-    Rational(long integer) {
-      this.numerator = integer;
-      this.denominator = 1;
-    }
-
-    /**
-     * 유리수 생성자.
      * @param numerator 분자
      * @param denominator 분모
      */
-    Rational(long numerator, long denominator) {
+    Rational(int numerator, int denominator) {
       long gcd = gcd(numerator, denominator);
       this.numerator = numerator / gcd;
       this.denominator = denominator / gcd;
@@ -65,15 +56,17 @@ class Pro_1_2_16 {
      */
     private Rational calculate(Rational b, LongBinaryOperator operator) {
       if (this.denominator == b.denominator) {
-        return new Rational(operator.applyAsLong(this.numerator, b.numerator), denominator);
+        return new Rational(
+            (int) operator.applyAsLong(this.numerator, b.numerator),
+            (int) denominator);
       }
       long lcm = lcm(this.denominator, b.denominator);
       return new Rational(
-          operator.applyAsLong(
+          (int) operator.applyAsLong(
               this.numerator * (lcm / this.denominator),
               b.numerator * (lcm / b.denominator)
           ),
-          lcm
+          (int) lcm
       );
     }
 
@@ -82,8 +75,8 @@ class Pro_1_2_16 {
      */
     Rational times(Rational b) {
       return new Rational(
-          this.numerator * b.numerator,
-          this.denominator * b.denominator
+          (int) (this.numerator * b.numerator),
+          (int) (this.denominator * b.denominator)
       );
     }
 
@@ -91,7 +84,7 @@ class Pro_1_2_16 {
      * this / b 의 결과를 리턴한다.
      */
     Rational divideBy(Rational b) {
-      return this.times(new Rational(b.denominator, b.getNumerator()));
+      return this.times(new Rational((int) b.denominator, (int) b.getNumerator()));
     }
 
     /**
@@ -120,12 +113,12 @@ class Pro_1_2_16 {
       return numerator + "/" + denominator;
     }
 
-    long getNumerator() {
-      return numerator;
+    int getNumerator() {
+      return (int) numerator;
     }
 
-    long getDenominator() {
-      return denominator;
+    int getDenominator() {
+      return (int) denominator;
     }
 
     /**
