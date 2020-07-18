@@ -1,5 +1,7 @@
 package algorythm;
 
+import java.util.Objects;
+
 /**
  * 유리수에 대한 덧셈, 뺄셈, 곱셈, 나눗셈을 지원하는 불변 데이터 타입 Rational 을 구현하라.
  *
@@ -82,8 +84,21 @@ class Pro_1_2_16 {
      * this 와 b 의 동치성 결과를 리턴한다.
      */
     @Override
-    public boolean equals(Object b) {
-      throw new UnsupportedOperationException();
+    public boolean equals(Object o) {
+      if (this == o) {
+        return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+        return false;
+      }
+      Rational rational = (Rational) o;
+      return getNumerator() == rational.getNumerator() &&
+          getDenominator() == rational.getDenominator();
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(getNumerator(), getDenominator());
     }
 
     @Override
@@ -105,7 +120,9 @@ class Pro_1_2_16 {
      * https://ko.wikipedia.org/wiki/%EC%9C%A0%ED%81%B4%EB%A6%AC%EB%93%9C_%ED%98%B8%EC%A0%9C%EB%B2%95
      */
     static long gcd(long a, long b) {
-      if (b == 0) return a;
+      if (b == 0) {
+        return a;
+      }
       return gcd(b, a%b);
     }
 
