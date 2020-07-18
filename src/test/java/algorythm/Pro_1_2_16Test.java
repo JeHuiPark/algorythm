@@ -12,11 +12,17 @@ import org.junit.jupiter.api.RepeatedTest;
 @SuppressWarnings("InnerClassMayBeStatic")
 class Pro_1_2_16Test {
 
+  Rational givenRandomRational() {
+    int given_numerator = new Random().nextInt(100) + 1;
+    int given_denominator = new Random().nextInt(100) + 1;
+    return new Rational(given_numerator, given_denominator);
+  }
+
   @Nested
   @DisplayName("Rational 은")
   class Describe_Rational {
 
-    @RepeatedTest(10)
+    @RepeatedTest(100)
     @DisplayName("분자와 분모가 항상 약분된 상태를 유지해야 한다. ")
     void test1() {
       int given_numerator = new Random().nextInt(100) + 1;
@@ -43,13 +49,7 @@ class Pro_1_2_16Test {
   @DisplayName("plus 는")
   class Describe_plus {
 
-    Rational givenRandomRational() {
-      int given_numerator = new Random().nextInt(100) + 1;
-      int given_denominator = new Random().nextInt(100) + 1;
-      return new Rational(given_numerator, given_denominator);
-    }
-
-    @RepeatedTest(10)
+    @RepeatedTest(100)
     @DisplayName("this 와 b 를 더한 결과를 리턴한다.")
     void test2() {
       var a = givenRandomRational();
@@ -60,6 +60,23 @@ class Pro_1_2_16Test {
       assertEquals(testHelper.expectedPlus(), actual);
     }
   }
+
+  @Nested
+  @DisplayName("minus 는")
+  class Describe_minus {
+
+    @RepeatedTest(100)
+    @DisplayName("this 에서 b를 뺀 결과를 리턴한다.")
+    void test3() {
+      var a = givenRandomRational();
+      var b = givenRandomRational();
+      var testHelper = new TestHelper(a, b);
+
+      var actual = a.minus(b);
+      assertEquals(testHelper.expectedMinus(), actual);
+    }
+  }
+
 
   /**
    * 테스트 검증 도우미 클래스.
@@ -84,5 +101,15 @@ class Pro_1_2_16Test {
       return new Rational(calcNumerator, calcDenominator);
     }
 
+    Rational expectedMinus() {
+      long aNumerator = a.getNumerator();
+      long bNumerator = b.getNumerator();
+      long aDenominator = a.getDenominator();
+      long bDenominator = b.getDenominator();
+
+      long calcDenominator = aDenominator * bDenominator;
+      long calcNumerator = (aNumerator * bDenominator) - (bNumerator * aDenominator);
+      return new Rational(calcNumerator, calcDenominator);
+    }
   }
 }
