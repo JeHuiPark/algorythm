@@ -75,7 +75,7 @@ class Pro_1_2_17 {
     }
 
     StrongRational divideBy(StrongRational b) {
-      throw new UnsupportedOperationException();
+      return this.times(new StrongRational(b.rational.getDenominator(), b.rational.getNumerator()));
     }
 
     @Override
