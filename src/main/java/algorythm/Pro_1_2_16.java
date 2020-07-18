@@ -87,7 +87,7 @@ class Pro_1_2_16 {
      * this / b 의 결과를 리턴한다.
      */
     Rational divideBy(Rational b) {
-      throw new UnsupportedOperationException();
+      return this.times(new Rational(b.denominator, b.getNumerator()));
     }
 
     /**
