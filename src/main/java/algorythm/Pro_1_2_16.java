@@ -77,7 +77,10 @@ class Pro_1_2_16 {
      * this * b 의 결과를 리턴한다.
      */
     Rational times(Rational b) {
-      throw new UnsupportedOperationException();
+      return new Rational(
+          this.numerator * b.numerator,
+          this.denominator * this.denominator
+      );
     }
 
     /**
