@@ -1,5 +1,6 @@
 package algorythm;
 
+import static algorythm.Pro_1_2_16.Rational.gcd;
 import static algorythm.Pro_1_2_16.Rational.lcm;
 
 import algorythm.Pro_1_2_16.Rational;
@@ -52,7 +53,25 @@ class Pro_1_2_17 {
     }
 
     StrongRational times(StrongRational b) {
-      throw new UnsupportedOperationException();
+      int gcd1 = (int) gcd(rational.getDenominator(), b.rational.getNumerator());
+      int gcd2 = (int) gcd(rational.getNumerator(), b.rational.getDenominator());
+      int fractionDenominatorA = (rational.getDenominator() / gcd1);
+      int fractionNumeratorA = (rational.getNumerator() / gcd2);
+      int fractionDenominatorB = (b.rational.getDenominator() / gcd2);
+      int fractionNumeratorB = (b.rational.getNumerator() / gcd1);
+
+      var rationalA = new Rational(fractionNumeratorA, fractionDenominatorA);
+      var rationalB = new Rational(fractionNumeratorB, fractionDenominatorB);
+
+      long denominator = Math.multiplyFull(rationalA.getDenominator(), rationalB.getDenominator());
+      assert Integer.MAX_VALUE >= denominator
+          && Integer.MIN_VALUE <= denominator;
+
+      long numerator = Math.multiplyFull(rational.getNumerator(), rationalB.getNumerator());
+      assert Integer.MAX_VALUE >= numerator
+          && Integer.MIN_VALUE <= numerator;
+
+      return StrongRational.of(rationalA.times(rationalB));
     }
 
     StrongRational divideBy(StrongRational b) {
