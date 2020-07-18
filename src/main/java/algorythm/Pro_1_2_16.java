@@ -63,7 +63,14 @@ class Pro_1_2_16 {
      * this - b 의 결과를 리턴한다.
      */
     Rational minus(Rational b) {
-      throw new UnsupportedOperationException();
+      if (this.denominator == b.denominator) {
+        return new Rational(this.numerator - b.numerator, denominator);
+      }
+      long lcm = lcm(this.denominator, b.denominator);
+      return new Rational(
+          (this.numerator * (lcm / this.denominator)) - (b.numerator * (lcm / b.denominator)),
+          lcm
+      );
     }
 
     /**
