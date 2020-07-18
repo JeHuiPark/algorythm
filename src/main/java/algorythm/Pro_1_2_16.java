@@ -113,7 +113,7 @@ class Pro_1_2_16 {
 
     @Override
     public String toString() {
-      throw new UnsupportedOperationException();
+      return numerator + "/" + denominator;
     }
 
     long getNumerator() {
