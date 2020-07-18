@@ -93,6 +93,21 @@ class Pro_1_2_16Test {
     }
   }
 
+  @Nested
+  @DisplayName("divideBy 는")
+  class Describe_divideBy {
+
+    @RepeatedTest(100)
+    @DisplayName("this 에서 b를 나누기한 결과를 리턴한다.")
+    void test4() {
+      var a = givenRandomRational();
+      var b = givenRandomRational();
+      var testHelper = new TestHelper(a, b);
+
+      var actual = a.divideBy(b);
+      assertEquals(testHelper.expectedDivide(), actual);
+    }
+  }
 
   /**
    * 테스트 검증 도우미 클래스.
@@ -132,6 +147,12 @@ class Pro_1_2_16Test {
       return new Rational(
           a.getNumerator() * b.getNumerator(),
           a.getDenominator() * b.getDenominator());
+    }
+
+    Rational expectedDivide() {
+      var numerator = a.getNumerator() * b.getDenominator();
+      var denominator = a.getDenominator() * b.getNumerator();
+      return new Rational(numerator, denominator);
     }
   }
 }
