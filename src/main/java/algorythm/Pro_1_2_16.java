@@ -1,6 +1,7 @@
 package algorythm;
 
 import java.util.Objects;
+import java.util.function.LongBinaryOperator;
 
 /**
  * 유리수에 대한 덧셈, 뺄셈, 곱셈, 나눗셈을 지원하는 불변 데이터 타입 Rational 을 구현하라.
@@ -49,26 +50,29 @@ class Pro_1_2_16 {
      * this + b 의 결과를 리턴한다.
      */
     Rational plus(Rational b) {
-      if (this.denominator == b.denominator) {
-        return new Rational(this.numerator + b.numerator, denominator);
-      }
-      long lcm = lcm(this.denominator, b.denominator);
-      return new Rational(
-          (this.numerator * (lcm / this.denominator)) + (b.numerator * (lcm / b.denominator)),
-          lcm
-      );
+      return calculate(b, Long::sum);
     }
 
     /**
      * this - b 의 결과를 리턴한다.
      */
     Rational minus(Rational b) {
+      return calculate(b, (_a, _b) -> _a - _b);
+    }
+
+    /**
+     * this 와 b 를 통분한 후, 주어진 operator 를 이용하여 계산한 결과를 리턴한다.
+     */
+    private Rational calculate(Rational b, LongBinaryOperator operator) {
       if (this.denominator == b.denominator) {
-        return new Rational(this.numerator - b.numerator, denominator);
+        return new Rational(operator.applyAsLong(this.numerator, b.numerator), denominator);
       }
       long lcm = lcm(this.denominator, b.denominator);
       return new Rational(
-          (this.numerator * (lcm / this.denominator)) - (b.numerator * (lcm / b.denominator)),
+          operator.applyAsLong(
+              this.numerator * (lcm / this.denominator),
+              b.numerator * (lcm / b.denominator)
+          ),
           lcm
       );
     }
