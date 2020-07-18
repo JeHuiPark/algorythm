@@ -28,15 +28,6 @@ class Pro_1_2_16 {
 
     /**
      * 유리수 생성자.
-     * @param integer 정수
-     */
-    Rational(long integer) {
-      this.numerator = integer;
-      this.denominator = 1;
-    }
-
-    /**
-     * 유리수 생성자.
      * @param numerator 분자
      * @param denominator 분모
      */
