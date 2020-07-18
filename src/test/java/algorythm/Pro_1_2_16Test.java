@@ -39,6 +39,28 @@ class Pro_1_2_16Test {
     }
   }
 
+  @Nested
+  @DisplayName("plus 는")
+  class Describe_plus {
+
+    Rational givenRandomRational() {
+      int given_numerator = new Random().nextInt(100) + 1;
+      int given_denominator = new Random().nextInt(100) + 1;
+      return new Rational(given_numerator, given_denominator);
+    }
+
+    @RepeatedTest(10)
+    @DisplayName("this 와 b 를 더한 결과를 리턴한다.")
+    void test2() {
+      var a = givenRandomRational();
+      var b = givenRandomRational();
+      var testHelper = new TestHelper(a, b);
+
+      var actual = a.plus(b);
+      assertEquals(testHelper.expectedPlus(), actual);
+    }
+  }
+
   /**
    * 테스트 검증 도우미 클래스.
    */
