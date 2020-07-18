@@ -113,12 +113,12 @@ class Pro_1_2_16 {
       return numerator + "/" + denominator;
     }
 
-    long getNumerator() {
-      return numerator;
+    int getNumerator() {
+      return (int) numerator;
     }
 
-    long getDenominator() {
-      return denominator;
+    int getDenominator() {
+      return (int) denominator;
     }
 
     /**

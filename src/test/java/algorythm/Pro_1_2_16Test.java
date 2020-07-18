@@ -145,13 +145,13 @@ class Pro_1_2_16Test {
 
     Rational expectedTimes() {
       return new Rational(
-          (int) (a.getNumerator() * b.getNumerator()),
-          (int) (a.getDenominator() * b.getDenominator()));
+          a.getNumerator() * b.getNumerator(),
+          a.getDenominator() * b.getDenominator());
     }
 
     Rational expectedDivide() {
-      int numerator = (int) (a.getNumerator() * b.getDenominator());
-      int denominator = (int) (a.getDenominator() * b.getNumerator());
+      int numerator = a.getNumerator() * b.getDenominator();
+      int denominator = a.getDenominator() * b.getNumerator();
       return new Rational(numerator, denominator);
     }
   }
