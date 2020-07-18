@@ -101,6 +101,13 @@ class Pro_1_2_16 {
       if (b == 0) return a;
       return gcd(b, a%b);
     }
+
+    /**
+     * a 와 b 의 최소 공배수를 리턴한다.
+     */
+    static long lcm(long a, long b) {
+      return (a * b) / gcd(a,b);
+    }
   }
 
 }
