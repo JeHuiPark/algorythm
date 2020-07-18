@@ -17,6 +17,10 @@ class Pro_1_2_17 {
       this.rational = new Rational(numerator, denominator);
     }
 
+    static StrongRational of(Rational rational) {
+      return new StrongRational(rational.getNumerator(), rational.getDenominator());
+    }
+
     StrongRational plus(StrongRational b) {
       throw new UnsupportedOperationException();
     }
