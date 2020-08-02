@@ -20,11 +20,8 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit Jupiter API for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
-
-    // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+    // JUnit Jupiter aggregator artifact that transitively pulls in dependencies on junit-jupiter-api, junit-jupiter-params, and junit-jupiter-engine for simplified dependency management in build tools such as Gradle and Maven.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.4.2'
 
     compile files('libs/algs4.jar')
 }
